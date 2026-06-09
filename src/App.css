@@ -117,4 +117,75 @@ body {
   }
 }
 
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  /* HERO — stack vertically */
+  section {
+    flex-direction: column !important;
+    padding: 32px 5% 24px !important;
+  }
+
+  /* HERO TEXT */
+  section>div:first-child {
+    width: 100% !important;
+    flex: unset !important;
+  }
+
+  /* COMPANY NAMES — side by side on mobile */
+  section>div:nth-child(2) {
+    width: 100% !important;
+    flex-direction: row !important;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  section>div:nth-child(2)>div {
+    flex: 1;
+    text-align: center;
+    padding: 14px 12px !important;
+    border-bottom: none !important;
+    border-right: 1px solid var(--border);
+  }
+
+  section>div:nth-child(2)>div:last-child {
+    border-right: none !important;
+  }
+
+  /* COUNTDOWN — full width */
+  section>div:nth-child(3) {
+    width: 100% !important;
+    align-self: unset !important;
+  }
+
+  /* VALUATION TICKER — full width */
+  section>div:nth-child(4) {
+    width: 100% !important;
+    align-self: unset !important;
+  }
+
+  /* IPO CARDS — 2 columns */
+  #learn>div {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* FOOTER — single column */
+  footer>div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  footer>div:last-child {
+    flex-direction: column !important;
+    gap: 8px !important;
+    text-align: center !important;
+  }
+
+  /* NAVBAR padding */
+  nav {
+    padding: 14px 16px !important;
+  }
+
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
