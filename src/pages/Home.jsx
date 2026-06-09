@@ -9,7 +9,7 @@ export default function Home() {
 
     const toggleTheme = () => {
         const next = !dark;
-        setDark(!dark);
+        setDark(next);
         document.documentElement.setAttribute('data-theme', !dark ? 'dark' : 'light');
         localStorage.setItem('theme', next ? 'dark' : 'light');
     };
