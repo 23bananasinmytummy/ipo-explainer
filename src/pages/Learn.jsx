@@ -236,7 +236,7 @@ function CompanySection({ company }) {
 
       {/* Key numbers */}
       <p style={{ fontSize: '11px', fontWeight: 600, color, letterSpacing: '1px', marginBottom: 10 }}>KEY NUMBERS</p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 28 }}>
+      <div className="learn-num-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 28 }}>
         {nums.map(({ label, val, colored }) => (
           <div key={label} style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '14px 16px', border: '1px solid var(--border)' }}>
             <div style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.8px', marginBottom: 6 }}>{label}</div>
@@ -395,7 +395,7 @@ export default function Learn() {
       )}
 
       {/* ── HERO ── */}
-      <section style={{ padding: '56px 8% 40px', borderBottom: '1px solid var(--border)' }}>
+      <section className="learn-hero" style={{ padding: '56px 8% 40px', borderBottom: '1px solid var(--border)' }}>
         <p style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent)', letterSpacing: '1px', marginBottom: 12 }}>COMPANY DEEP-DIVE</p>
         <h1 style={{ fontSize: 'clamp(22px, 4vw, 32px)', fontWeight: 600, letterSpacing: '-0.5px', color: 'var(--text)', marginBottom: 10, lineHeight: 1.2 }}>
           Understand the companies<br />before you invest.
@@ -422,9 +422,23 @@ export default function Learn() {
         .tab-anthropic::after { background: ${ANTHROPIC_COLOR}; }
         .tab-more::after { background: var(--text-muted); }
         .tab-btn.active-tab::after { width: 100%; }
+
+        @media (max-width: 768px) {
+          .learn-hero { padding: 32px 5% 24px !important; }
+          .learn-tabs { padding: 0 0 0 5% !important; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; flex-wrap: nowrap !important; }
+          .learn-tabs::-webkit-scrollbar { display: none; }
+          .tab-btn { padding: 10px 12px !important; font-size: 11px !important; white-space: nowrap; flex-shrink: 0; }
+          .learn-main { padding: 24px 5% 48px !important; }
+          .learn-num-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+          .learn-cta { flex-direction: column !important; gap: 16px !important; }
+          .learn-cta a { width: 100% !important; justify-content: center !important; }
+          .learn-footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .learn-footer-bottom { flex-direction: column !important; gap: 8px !important; text-align: center !important; }
+          nav { padding: 14px 16px !important; }
+        }
       `}</style>
 
-      <div style={{ padding: '0 8%', borderBottom: '1px solid var(--border)', display: 'flex', gap: 0 }}>
+      <div className="learn-tabs" style={{ padding: '0 8%', borderBottom: '1px solid var(--border)', display: 'flex', gap: 0 }}>
         {[
           { key: 'spacex', label: 'SPACEX', color: SPACEX_COLOR, font: "'Arial Black', Arial, sans-serif", weight: 900, spacing: '1.5px', cls: 'tab-spacex' },
           { key: 'anthropic', label: 'Anthropic', color: ANTHROPIC_COLOR, font: 'Georgia, serif', weight: 400, spacing: '0.3px', cls: 'tab-anthropic' },
@@ -455,7 +469,7 @@ export default function Learn() {
       </div>
 
       {/* ── CONTENT ── */}
-      <main style={{ padding: '40px 8% 64px' }}>
+      <main className="learn-main" style={{ padding: '40px 8% 64px' }}>
         {activeTab === 'more' ? (
           <div style={{ maxWidth: 480, margin: '40px auto', textAlign: 'center' }}>
             <div style={{ fontSize: 32, marginBottom: 20 }}>🔭</div>
@@ -479,7 +493,7 @@ export default function Learn() {
       </main>
 
       {/* ── BOTTOM CTA ── */}
-      <div style={{ borderTop: '1px solid var(--border)', padding: '40px 8%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--bg-secondary)' }}>
+      <div className="learn-cta" style={{ borderTop: '1px solid var(--border)', padding: '40px 8%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--bg-secondary)' }}>
         <div>
           <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>Ready to think about risk?</div>
           <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>See how these IPOs compare to historical listings — and what that means for you.</div>
@@ -495,7 +509,7 @@ export default function Learn() {
 
       {/* ── FOOTER ── */}
       <footer style={{ borderTop: '1px solid var(--border)', padding: '40px 8%', background: 'var(--bg)', marginTop: 0 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1.5fr', gap: 40, marginBottom: 32 }}>
+        <div className="learn-footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1.5fr', gap: 40, marginBottom: 32 }}>
           <div>
             <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--text)', letterSpacing: '-0.3px', marginBottom: 8 }}>
               ipo<span style={{ color: 'var(--accent)' }}>.</span>guide
@@ -536,7 +550,7 @@ export default function Learn() {
             </div>
           </div>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 24, borderTop: '1px solid var(--border)' }}>
+        <div className="learn-footer-bottom" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 24, borderTop: '1px solid var(--border)' }}>
           <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>© 2026 ipo.guide · All rights reserved</div>
           <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>Not financial advice · Educational use only</div>
         </div>
