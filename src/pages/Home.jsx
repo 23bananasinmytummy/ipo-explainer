@@ -102,7 +102,7 @@ export default function Home() {
                         fontSize: '20px', cursor: 'pointer', color: 'var(--text-muted)', marginBottom: '24px'
                     }}>✕</button>
                     {['Home', 'Learn', 'Risk', 'Tools', 'Newsletter'].map(page => (
-                        <a key={page} href="#" style={{
+                        <a key={page} href="/" style={{
                             padding: '12px 0', borderBottom: '1px solid var(--border)',
                             color: 'var(--text-muted)', textDecoration: 'none', fontSize: '14px'
                         }}>{page}</a>
@@ -147,7 +147,6 @@ export default function Home() {
 
                 {/* COMPANY NAMES */}
                 <div style={{
-                    flexShrink: 0, display: 'flex', flexDirection: 'column',
                     flexShrink: 0, display: 'flex', flexDirection: 'column',
                 }}>
                     {[
@@ -315,7 +314,7 @@ export default function Home() {
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                             {['Home', 'Learn', 'Risk', 'Tools', 'Newsletter'].map(page => (
-                                <a key={page} href="#" style={{
+                                <a key={page} href="/" style={{
                                     fontSize: '13px', color: 'var(--text-muted)',
                                     textDecoration: 'none'
                                 }}>{page}</a>
