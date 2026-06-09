@@ -189,7 +189,7 @@ export default function Home() {
                         Two of the world's most talked-about companies are about to go public.
                         Here's everything a first-time investor needs to know. NO finance degree required.
                     </p>
-                    <a href="#learn" className="cta-btn" style={{
+                    <a href="/learn" className="cta-btn" style={{
                         display: 'inline-flex', alignItems: 'center', gap: '8px',
                         background: 'var(--accent)', color: '#fff', padding: '13px 24px',
                         borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: '500'
