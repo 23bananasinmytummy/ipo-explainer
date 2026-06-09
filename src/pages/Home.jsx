@@ -93,20 +93,73 @@ export default function Home() {
                     className="drawer-slide"
                     onMouseLeave={() => setMenuOpen(false)}
                     style={{
-                        position: 'fixed', top: 0, right: 0, height: '100vh', width: '220px',
+                        position: 'fixed', top: 0, right: 0, height: '100vh', width: '240px',
                         background: 'var(--bg)', borderLeft: '1px solid var(--border)',
-                        padding: '24px 20px', zIndex: 200, display: 'flex', flexDirection: 'column'
+                        padding: '24px 20px', zIndex: 200, display: 'flex', flexDirection: 'column',
+                        overflowY: 'auto'
                     }}>
                     <button onClick={() => setMenuOpen(false)} style={{
                         alignSelf: 'flex-end', background: 'none', border: 'none',
                         fontSize: '20px', cursor: 'pointer', color: 'var(--text-muted)', marginBottom: '24px'
                     }}>✕</button>
+
                     {['Home', 'Learn', 'Risk', 'Tools', 'Newsletter'].map(page => (
                         <a key={page} href="/" style={{
                             padding: '12px 0', borderBottom: '1px solid var(--border)',
                             color: 'var(--text-muted)', textDecoration: 'none', fontSize: '14px'
                         }}>{page}</a>
                     ))}
+
+                    <div style={{ height: '1px', background: 'var(--border)', margin: '20px 0' }} />
+
+                    <div style={{ fontSize: '9px', fontWeight: '600', color: 'var(--text-muted)', letterSpacing: '1.2px', marginBottom: '12px' }}>
+                        LATEST NEWS
+                    </div>
+
+                    {[
+                        { tag: 'SPACEX', tagBg: '#E6F1FB', tagColor: '#185FA5', title: 'SpaceX targets $1.77T valuation in historic June 12 IPO', date: 'Jun 9, 2026', url: 'https://capital.com/en-int/learn/ipo/spacex-ipo' },
+                        { tag: 'SPACEX', tagBg: '#E6F1FB', tagColor: '#185FA5', title: "SpaceX's historic IPO: billions in losses and Musk's massive ownership", date: 'May 20, 2026', url: 'https://www.cnbc.com/2026/05/20/spacex-ipo-live-updates.html' },
+                        { tag: 'ANTHROPIC', tagBg: '#FAF0EB', tagColor: '#8B4513', title: 'Anthropic files confidential IPO, targets $965B valuation', date: 'Jun 4, 2026', url: 'https://techcrunch.com/2026/06/04/ahead-of-its-ipo-anthropics-daniela-amodei-shrugs-off-doubts-about-ais-returns/' },
+                        { tag: 'ANTHROPIC', tagBg: '#FAF0EB', tagColor: '#8B4513', title: 'Anthropic leads IPO race against OpenAI amid AI competition', date: 'Jun 8, 2026', url: 'https://www.gurufocus.com/news/8904873/anthropic-leads-ipo-race-against-openai-amid-ai-market-competition' },
+                    ].map(({ tag, tagBg, tagColor, title, date, url }) => (
+                        <a key={title} href={url} target="_blank" rel="noreferrer" style={{
+                            display: 'block', marginBottom: '12px', paddingBottom: '12px',
+                            borderBottom: '1px solid var(--border)', textDecoration: 'none'
+                        }}>
+                            <div style={{
+                                display: 'inline-block', fontSize: '8px', fontWeight: '600',
+                                padding: '2px 6px', borderRadius: '4px', marginBottom: '4px',
+                                background: tagBg, color: tagColor
+                            }}>{tag}</div>
+                            <div style={{ fontSize: '11px', fontWeight: '500', color: 'var(--text)', lineHeight: '1.4', marginBottom: '3px' }}>{title}</div>
+                            <div style={{ fontSize: '9px', color: 'var(--text-muted)' }}>{date}</div>
+                        </a>
+                    ))}
+
+                    <div style={{ height: '1px', background: 'var(--border)', margin: '8px 0 16px' }} />
+
+                    <div style={{ fontSize: '9px', fontWeight: '600', color: 'var(--text-muted)', letterSpacing: '1.2px', marginBottom: '12px' }}>
+                        DID YOU KNOW?
+                    </div>
+                    <div style={{
+                        background: 'var(--bg-secondary)', borderRadius: '10px',
+                        padding: '12px', border: '1px solid var(--border)'
+                    }}>
+                        <div style={{ fontSize: '8px', fontWeight: '600', color: 'var(--text-muted)', marginBottom: '6px' }}>
+                            {['🚀 SPACEX FACT', '🤖 ANTHROPIC FACT'][Math.floor(Math.random() * 2)]}
+                        </div>
+                        <div style={{ fontSize: '11px', color: 'var(--text)', lineHeight: '1.6' }}>
+                            {[
+                                "SpaceX has launched over 250 missions — more than any other company in history.",
+                                "Anthropic was founded in 2021 by former OpenAI researchers including siblings Dario and Daniela Amodei.",
+                                "Falcon 9 was the first orbital rocket to successfully land and be reused.",
+                                "Claude is trained using Constitutional AI — a technique to make AI safer and more honest.",
+                                "Elon Musk founded SpaceX in 2002 with $100M of his own money from the PayPal sale.",
+                                "Anthropic's valuation grew from $4.1B in 2023 to $965B in 2026 — in just 3 years.",
+                            ][Math.floor(Math.random() * 6)]}
+                        </div>
+                    </div>
+
                 </div>
             )}
 
