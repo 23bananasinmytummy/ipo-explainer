@@ -72,8 +72,8 @@ function PostIPOChart({ data, color, ipoPrice }) {
     xs.forEach((x, i) => { const d = Math.abs(x - mx); if (d < minD) { minD = d; closest = i; } });
     setActiveIdx(closest);
     const relX = (xs[closest] / W) * rect.width;
-    const tipW = 200;
-    const left = relX + tipW > rect.width ? relX - tipW - 10 : relX + 12;
+    const tipW = 190;
+    const left = Math.min(Math.max(relX - tipW / 2, 0), rect.width - tipW);
     const top = (ys[closest] / H) * rect.height - 20;
     setTooltip({ ...data[closest], left, top });
   };
@@ -202,7 +202,7 @@ function HistoricalCard({ company }) {
   };
 
   return (
-    <div style={{
+    <div className="risk-historical-card" style={{
       background: 'var(--bg-secondary)',
       border: '1px solid var(--border)',
       borderRadius: 16,
@@ -210,7 +210,7 @@ function HistoricalCard({ company }) {
       marginBottom: 24,
     }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
+      <div className="risk-historical-card-header" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
         <div>
           {isUber
             ? <div style={{ fontFamily: "'Trebuchet MS', 'Arial Black', sans-serif", fontSize: 22, fontWeight: 700, color: 'var(--text)', marginBottom: 4, letterSpacing: '2px', textTransform: 'uppercase' }}>{config.name}</div>
@@ -218,7 +218,7 @@ function HistoricalCard({ company }) {
           }
           <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>IPO: {config.year} · NYSE</div>
         </div>
-        <div style={{
+        <div className="risk-verdict-badge" style={{
           background: config.verdictBg,
           border: `1px solid ${config.verdictColor}`,
           borderRadius: 20,
@@ -401,7 +401,10 @@ export default function Risk() {
           .risk-main { padding: 24px 5% 48px !important; }
           .risk-concept-grid { grid-template-columns: 1fr !important; }
           .risk-stat-row { grid-template-columns: 1fr !important; }
-          .risk-table-wrap { overflow-x: auto; }
+          .risk-historical-card { padding: 18px !important; }
+          .risk-historical-card-header { flex-wrap: wrap !important; gap: 8px !important; }
+          .risk-historical-card-header .risk-verdict-badge { align-self: flex-start !important; }
+          .risk-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
           .risk-table-wrap table { min-width: 560px; }
           .risk-cta { flex-direction: column !important; gap: 16px !important; }
           .risk-cta a { width: 100% !important; justify-content: center !important; }
