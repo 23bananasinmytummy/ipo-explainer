@@ -82,8 +82,6 @@ function PostIPOChart({ data, color, ipoPrice }) {
     hideTimer.current = setTimeout(() => { setTooltip(null); setActiveIdx(null); }, 100);
   };
 
-  const aboveIPO = data[data.length - 1].price > ipoPrice;
-
   return (
     <div style={{ position: 'relative' }}>
       <svg
