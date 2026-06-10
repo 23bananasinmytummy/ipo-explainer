@@ -325,8 +325,13 @@ export default function Learn() {
         position: 'sticky', top: 0, background: 'var(--bg)', zIndex: 100
       }}>
         <a href="/" style={{ textDecoration: 'none' }}>
-          <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text)', letterSpacing: '-0.3px' }}>
-            ipo<span style={{ color: 'var(--accent)' }}>.</span>guide
+          <div>
+            <div style={{ fontSize: '15px', fontWeight: '600', color: 'var(--text)', letterSpacing: '-0.3px' }}>
+              ipo<span style={{ color: 'var(--accent)' }}>.</span>guide
+            </div>
+            <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: 2, letterSpacing: '0.3px' }}>
+              by henry yeo
+            </div>
           </div>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>

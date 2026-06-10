@@ -28,7 +28,7 @@ export default function Home() {
 
     useEffect(() => {
         const tick = () => {
-            setSpacexTime(calcTime('2026-06-12T00:00:00'));
+            setSpacexTime(calcTime('2026-06-12T21:30:00+08:00'));
             setAnthropic(calcTime('2026-10-01T00:00:00'));
         };
         tick();
@@ -62,8 +62,13 @@ export default function Home() {
                 padding: '18px 28px', borderBottom: '1px solid var(--border)',
                 position: 'sticky', top: 0, background: 'var(--bg)', zIndex: 100
             }}>
-                <div style={{ fontSize: '15px', fontWeight: '600', color: 'var(--text)', letterSpacing: '-0.3px' }}>
-                    ipo<span style={{ color: 'var(--accent)' }}>.</span>guide
+                <div>
+                    <div style={{ fontSize: '15px', fontWeight: '600', color: 'var(--text)', letterSpacing: '-0.3px' }}>
+                        ipo<span style={{ color: 'var(--accent)' }}>.</span>guide
+                    </div>
+                    <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: 2, letterSpacing: '0.3px' }}>
+                        by henry yeo
+                    </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <div
@@ -248,12 +253,18 @@ export default function Home() {
                                     <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>{sub}</div>
                                 </div>
                             </div>
-                            <div style={{ display: 'flex', gap: '6px' }}>
-                                <CountBlock val={time.d} lbl="DAYS" color={color} />
-                                <CountBlock val={time.h} lbl="HRS" color={color} />
-                                <CountBlock val={time.m} lbl="MIN" color={color} />
-                                <CountBlock val={time.s} lbl="SEC" color={color} />
-                            </div>
+                            {time.d === 0 && time.h === 0 && time.m === 0 && time.s === 0 && time.d !== undefined ? (
+                                <div style={{ fontSize: '13px', fontWeight: '600', color: '#16a34a', letterSpacing: '-0.2px' }}>
+                                    IPO is live →
+                                </div>
+                            ) : (
+                                <div style={{ display: 'flex', gap: '6px' }}>
+                                    <CountBlock val={time.d} lbl="DAYS" color={color} />
+                                    <CountBlock val={time.h} lbl="HRS" color={color} />
+                                    <CountBlock val={time.m} lbl="MIN" color={color} />
+                                    <CountBlock val={time.s} lbl="SEC" color={color} />
+                                </div>
+                            )}
                         </div>
                     ))}
                     <div style={{ fontSize: '9px', color: 'var(--text-muted)', marginTop: '14px', lineHeight: '1.5' }}>
@@ -314,7 +325,7 @@ export default function Home() {
                     Wait — what's an IPO?
                 </h2>
                 <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '32px' }}>
-                    Plain English. No jargon. Promise.
+                    Plain English. No Jargon.
                 </p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
                     {[
