@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -103,11 +104,19 @@ export default function Home() {
                         fontSize: '20px', cursor: 'pointer', color: 'var(--text-muted)', marginBottom: '24px'
                     }}>✕</button>
 
-                    {['Home', 'Learn', 'Risk', 'Tools', 'Newsletter'].map(page => (
-                        <a key={page} href="/" style={{
+                    {[
+                        { label: 'Home', to: '/' },
+                        { label: 'Learn', to: '/learn' },
+                        { label: 'Risk', to: '/risk' },
+                        { label: 'Tools', to: '/tools' },
+                        { label: 'Newsletter', to: '/newsletter' },
+                    ].map(({ label, to }) => (
+                        <Link key={label} to={to} style={{
                             padding: '12px 0', borderBottom: '1px solid var(--border)',
-                            color: 'var(--text-muted)', textDecoration: 'none', fontSize: '14px'
-                        }}>{page}</a>
+                            color: label === 'Home' ? 'var(--accent)' : 'var(--text-muted)',
+                            textDecoration: 'none', fontSize: '14px',
+                            fontWeight: label === 'Home' ? 600 : 400,
+                        }}>{label}</Link>
                     ))}
 
                     <div style={{ height: '1px', background: 'var(--border)', margin: '20px 0' }} />
