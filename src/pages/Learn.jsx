@@ -472,7 +472,6 @@ export default function Learn() {
       <main className="learn-main" style={{ padding: '40px 8% 64px' }}>
         {activeTab === 'more' ? (
           <div style={{ maxWidth: 480, margin: '40px auto', textAlign: 'center' }}>
-            <div style={{ fontSize: 32, marginBottom: 20 }}>🔭</div>
             <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--text)', marginBottom: 10 }}>
               More companies on the way
             </div>
