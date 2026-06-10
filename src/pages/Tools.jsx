@@ -447,7 +447,16 @@ export default function Tools() {
 
       {/* ── MOBILE STYLES ── */}
       <style>{`
+        .tools-tab-btn { position: relative; background: none; border: none; cursor: pointer; padding: 14px 24px; margin-bottom: -1px; transition: color 0.2s ease; }
+        .tools-tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0%; height: 2px; transition: width 0.25s ease; }
+        .tools-tab-btn:hover::after { width: 100%; }
+        .tools-tab-spacex::after { background: ${SPACEX_COLOR}; }
+        .tools-tab-anthropic::after { background: ${ANTHROPIC_COLOR}; }
+        .tools-tab-btn.tools-active-tab::after { width: 100%; }
+
         @media (max-width: 768px) {
+          .tools-tab-wrap { padding: 0 0 0 5% !important; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap !important; }
+          .tools-tab-btn { padding: 10px 14px !important; font-size: 11px !important; white-space: nowrap; flex-shrink: 0; }
           .tools-hero { padding: 32px 5% 24px !important; }
           .tools-main { padding: 24px 5% 48px !important; }
           .tools-calc-inputs { grid-template-columns: 1fr !important; }
@@ -484,26 +493,27 @@ export default function Tools() {
         </p>
 
         {/* Tabs */}
-        <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
-          {['spacex', 'anthropic'].map(co => (
-            <button
-              key={co}
-              onClick={() => setCalcTab(co)}
-              style={{
-                padding: '7px 18px',
-                borderRadius: 8,
-                border: calcTab === co ? 'none' : '1px solid var(--border)',
-                background: calcTab === co ? (co === 'spacex' ? SPACEX_COLOR : ANTHROPIC_COLOR) : 'var(--bg-secondary)',
-                color: calcTab === co ? '#fff' : 'var(--text-muted)',
-                fontSize: 12,
-                fontWeight: calcTab === co ? 600 : 400,
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              {co === 'spacex' ? 'SpaceX' : 'Anthropic'}
-            </button>
-          ))}
+        <div className="tools-tab-wrap" style={{ display: 'flex', gap: 0, borderBottom: '1px solid var(--border)', marginBottom: 24 }}>
+          {[
+            { key: 'spacex', label: 'SPACEX', color: SPACEX_COLOR, font: "'Arial Black', Arial, sans-serif", weight: 900, spacing: '1.5px', cls: 'tools-tab-spacex' },
+            { key: 'anthropic', label: 'Anthropic', color: ANTHROPIC_COLOR, font: 'Georgia, serif', weight: 400, spacing: '0.3px', cls: 'tools-tab-anthropic' },
+          ].map(({ key, label, color, font, weight, spacing, cls }) => {
+            const active = calcTab === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setCalcTab(key)}
+                className={`tools-tab-btn ${cls}${active ? ' tools-active-tab' : ''}`}
+                style={{
+                  fontSize: 14, fontFamily: font, fontWeight: weight,
+                  letterSpacing: spacing,
+                  color: active ? color : 'var(--text-muted)',
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Inputs */}
@@ -631,26 +641,27 @@ export default function Tools() {
         </p>
 
         {/* Scenario tabs */}
-        <div style={{ display: 'flex', gap: 8, marginBottom: 24 }}>
-          {['spacex', 'anthropic'].map(co => (
-            <button
-              key={co}
-              onClick={() => setScenarioTab(co)}
-              style={{
-                padding: '7px 18px',
-                borderRadius: 8,
-                border: scenarioTab === co ? 'none' : '1px solid var(--border)',
-                background: scenarioTab === co ? (co === 'spacex' ? SPACEX_COLOR : ANTHROPIC_COLOR) : 'var(--bg-secondary)',
-                color: scenarioTab === co ? '#fff' : 'var(--text-muted)',
-                fontSize: 12,
-                fontWeight: scenarioTab === co ? 600 : 400,
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              {co === 'spacex' ? 'SpaceX' : 'Anthropic'}
-            </button>
-          ))}
+        <div className="tools-tab-wrap" style={{ display: 'flex', gap: 0, borderBottom: '1px solid var(--border)', marginBottom: 24 }}>
+          {[
+            { key: 'spacex', label: 'SPACEX', color: SPACEX_COLOR, font: "'Arial Black', Arial, sans-serif", weight: 900, spacing: '1.5px', cls: 'tools-tab-spacex' },
+            { key: 'anthropic', label: 'Anthropic', color: ANTHROPIC_COLOR, font: 'Georgia, serif', weight: 400, spacing: '0.3px', cls: 'tools-tab-anthropic' },
+          ].map(({ key, label, color, font, weight, spacing, cls }) => {
+            const active = scenarioTab === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setScenarioTab(key)}
+                className={`tools-tab-btn ${cls}${active ? ' tools-active-tab' : ''}`}
+                style={{
+                  fontSize: 14, fontFamily: font, fontWeight: weight,
+                  letterSpacing: spacing,
+                  color: active ? color : 'var(--text-muted)',
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
 
         <ScenarioCards company={scenarioTab} />
