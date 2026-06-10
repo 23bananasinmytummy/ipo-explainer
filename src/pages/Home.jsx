@@ -253,18 +253,12 @@ export default function Home() {
                                     <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>{sub}</div>
                                 </div>
                             </div>
-                            {time.d === 0 && time.h === 0 && time.m === 0 && time.s === 0 && time.d !== undefined ? (
-                                <div style={{ fontSize: '13px', fontWeight: '600', color: '#16a34a', letterSpacing: '-0.2px' }}>
-                                    IPO is live →
-                                </div>
-                            ) : (
-                                <div style={{ display: 'flex', gap: '6px' }}>
-                                    <CountBlock val={time.d} lbl="DAYS" color={color} />
-                                    <CountBlock val={time.h} lbl="HRS" color={color} />
-                                    <CountBlock val={time.m} lbl="MIN" color={color} />
-                                    <CountBlock val={time.s} lbl="SEC" color={color} />
-                                </div>
-                            )}
+                            <div style={{ display: 'flex', gap: '6px' }}>
+                                <CountBlock val={time.d} lbl="DAYS" color={color} />
+                                <CountBlock val={time.h} lbl="HRS" color={color} />
+                                <CountBlock val={time.m} lbl="MIN" color={color} />
+                                <CountBlock val={time.s} lbl="SEC" color={color} />
+                            </div>
                         </div>
                     ))}
                     <div style={{ fontSize: '9px', color: 'var(--text-muted)', marginTop: '14px', lineHeight: '1.5' }}>
@@ -386,11 +380,17 @@ export default function Home() {
                             PAGES
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                            {['Home', 'Learn', 'Risk', 'Tools', 'Newsletter'].map(page => (
-                                <a key={page} href="/" style={{
+                            {[
+                                { label: 'Home', to: '/' },
+                                { label: 'Learn', to: '/learn' },
+                                { label: 'Risk', to: '/risk' },
+                                { label: 'Tools', to: '/tools' },
+                                { label: 'Newsletter', to: '/newsletter' },
+                            ].map(({ label, to }) => (
+                                <Link key={label} to={to} style={{
                                     fontSize: '13px', color: 'var(--text-muted)',
                                     textDecoration: 'none'
-                                }}>{page}</a>
+                                }}>{label}</Link>
                             ))}
                         </div>
                     </div>
