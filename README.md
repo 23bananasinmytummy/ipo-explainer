@@ -1,75 +1,83 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# ipo.guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A beginner-friendly, multi-page website explaining the SpaceX and Anthropic IPOs to first-time investors. Built as a portfolio project by a data analytics student learning React for the first time.
 
-## Available Scripts
+🔗 **Live site:** [ipo.guide](https://ipo.guide)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## What's inside
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Page | Description |
+|---|---|
+| **Home** | Overview of both IPOs with live countdown timers |
+| **Learn** | Company fundamentals, key numbers, and custom SVG valuation sparklines |
+| **Risk** | Historical IPO case studies with post-IPO performance charts |
+| **Tools** | Investment calculator, scenario planner (Bear/Base/Bull), and a risk score quiz |
+| **Newsletter** | Signup form connected to Google Sheets via Google Apps Script |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Tech stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React** + **React Router** — frontend and routing
+- **Custom SVG** — all charts and sparklines hand-coded, no charting library
+- **Google Apps Script → Google Sheets** — newsletter backend
+- **Vercel** — deployment, auto-deploys on git push
+- **Total cost: $0**
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Light / dark mode toggle (saved to localStorage)
+- Fully mobile responsive (768px breakpoint)
+- Live countdown timers to IPO dates
+- Investment calculator with 5 price targets
+- Risk score quiz with investor profile output (Bear / Base / Bull)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Running locally
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+git clone https://github.com/23bananasinmytummy/ipo-explainer.git
+cd ipo-explainer
+npm install
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project structure
 
-## Learn More
+```
+src/
+├── pages/
+│   ├── Home.jsx
+│   ├── Learn.jsx
+│   ├── Risk.jsx
+│   ├── Tools.jsx
+│   └── Newsletter.jsx
+├── App.js
+└── index.js
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Disclaimer
 
-### Code Splitting
+This website is for informational and educational purposes only. It does not constitute financial advice. Always do your own research before making investment decisions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Henry Yeo** — Data Analytics Student, Singapore
+[LinkedIn](https://www.linkedin.com/in/henry-yeo-ba6408299/) · [GitHub](https://github.com/23bananasinmytummy) · [Instagram](https://www.instagram.com/henry.ykd/)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# ipo-explainer
-Beginner-friendly guide to SpaceX &amp; Anthropic IPOs
->>>>>>> 03faa6162c57ec131d948c75532d1ee0c15e19f9
+MIT License © 2026 Henry Yeo
