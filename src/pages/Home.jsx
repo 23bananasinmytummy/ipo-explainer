@@ -11,7 +11,7 @@ export default function Home() {
     const toggleTheme = () => {
         const next = !dark;
         setDark(next);
-        document.documentElement.setAttribute('data-theme', !dark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', next ? 'dark' : 'light');
         localStorage.setItem('theme', next ? 'dark' : 'light');
     };
 
