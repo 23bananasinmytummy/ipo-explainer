@@ -251,14 +251,14 @@ export default function Newsletter() {
           <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>Dig into the risk history or run the numbers again.</div>
         </div>
         <div className="nl-cta-btns" style={{ display: 'flex', gap: 10, flexShrink: 0 }}>
-          <Link to="/risk" style={{
+          <Link to="/risk" className="cta-btn" style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
             border: '1px solid var(--border)', color: 'var(--text)',
             padding: '11px 18px', borderRadius: 8,
             textDecoration: 'none', fontSize: 13, fontWeight: 500,
             background: 'var(--bg)',
           }}>
-            ← Risk
+            <span className="btn-arrow" style={{ display: 'inline-block' }}>←</span> Risk
           </Link>
           <Link to="/tools" className="cta-btn" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
