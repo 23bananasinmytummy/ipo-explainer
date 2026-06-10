@@ -11,7 +11,6 @@ const SCENARIOS = {
     estimatedValuation: '$1.75T',
     bear: {
       label: 'Bear case',
-      emoji: '🐻',
       rate1yr: -0.35,
       rate3yr: -0.20,
       rate5yr: 0.10,
@@ -20,7 +19,6 @@ const SCENARIOS = {
     },
     base: {
       label: 'Base case',
-      emoji: '📊',
       rate1yr: 0.05,
       rate3yr: 0.40,
       rate5yr: 1.10,
@@ -29,7 +27,6 @@ const SCENARIOS = {
     },
     bull: {
       label: 'Bull case',
-      emoji: '🚀',
       rate1yr: 0.40,
       rate3yr: 1.50,
       rate5yr: 4.00,
@@ -497,6 +494,7 @@ export default function Tools() {
           {[
             { key: 'spacex', label: 'SPACEX', color: SPACEX_COLOR, font: "'Arial Black', Arial, sans-serif", weight: 900, spacing: '1.5px', cls: 'tools-tab-spacex' },
             { key: 'anthropic', label: 'Anthropic', color: ANTHROPIC_COLOR, font: 'Georgia, serif', weight: 400, spacing: '0.3px', cls: 'tools-tab-anthropic' },
+            { key: 'more', label: '+ More to come', color: 'var(--text-muted)', font: 'inherit', weight: 400, spacing: '0.2px', cls: 'tools-tab-more' },
           ].map(({ key, label, color, font, weight, spacing, cls }) => {
             const active = calcTab === key;
             return (
@@ -505,7 +503,7 @@ export default function Tools() {
                 onClick={() => setCalcTab(key)}
                 className={`tools-tab-btn ${cls}${active ? ' tools-active-tab' : ''}`}
                 style={{
-                  fontSize: 14, fontFamily: font, fontWeight: weight,
+                  fontSize: key === 'more' ? 13 : 14, fontFamily: font, fontWeight: weight,
                   letterSpacing: spacing,
                   color: active ? color : 'var(--text-muted)',
                 }}
@@ -515,6 +513,13 @@ export default function Tools() {
             );
           })}
         </div>
+
+        {calcTab === 'more' && (
+          <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 16, padding: '40px 24px', textAlign: 'center', marginBottom: 24 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 8 }}>More companies coming soon</div>
+            <div style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>We're working on adding more IPOs to the calculator. Check back soon — or subscribe to the newsletter to get notified.</div>
+          </div>
+        )}
 
         {/* Inputs */}
         <div style={{
@@ -645,6 +650,7 @@ export default function Tools() {
           {[
             { key: 'spacex', label: 'SPACEX', color: SPACEX_COLOR, font: "'Arial Black', Arial, sans-serif", weight: 900, spacing: '1.5px', cls: 'tools-tab-spacex' },
             { key: 'anthropic', label: 'Anthropic', color: ANTHROPIC_COLOR, font: 'Georgia, serif', weight: 400, spacing: '0.3px', cls: 'tools-tab-anthropic' },
+            { key: 'more', label: '+ More to come', color: 'var(--text-muted)', font: 'inherit', weight: 400, spacing: '0.2px', cls: 'tools-tab-more' },
           ].map(({ key, label, color, font, weight, spacing, cls }) => {
             const active = scenarioTab === key;
             return (
@@ -653,7 +659,7 @@ export default function Tools() {
                 onClick={() => setScenarioTab(key)}
                 className={`tools-tab-btn ${cls}${active ? ' tools-active-tab' : ''}`}
                 style={{
-                  fontSize: 14, fontFamily: font, fontWeight: weight,
+                  fontSize: key === 'more' ? 13 : 14, fontFamily: font, fontWeight: weight,
                   letterSpacing: spacing,
                   color: active ? color : 'var(--text-muted)',
                 }}
@@ -664,7 +670,15 @@ export default function Tools() {
           })}
         </div>
 
-        <ScenarioCards company={scenarioTab} />
+        {scenarioTab === 'more'
+          ? (
+            <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 16, padding: '40px 24px', textAlign: 'center' }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 8 }}>More companies coming soon</div>
+              <div style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>We're modelling more IPO scenarios. Check back soon — or subscribe to the newsletter to get notified.</div>
+            </div>
+          )
+          : <ScenarioCards company={scenarioTab} />
+        }
 
         {/* ── SECTION 3: RISK QUIZ ── */}
         <p style={{ fontSize: 11, fontWeight: 600, color: 'var(--accent)', letterSpacing: '1px', marginBottom: 10, marginTop: 56 }}>RISK SCORE</p>
