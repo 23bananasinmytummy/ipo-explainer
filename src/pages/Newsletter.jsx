@@ -26,12 +26,21 @@ export default function Newsletter() {
     if (saved) document.documentElement.setAttribute('data-theme', saved);
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!firstName.trim()) { setError('Please enter your first name.'); return; }
     if (!email.trim() || !email.includes('@')) { setError('Please enter a valid email address.'); return; }
     setError('');
-    // TODO: replace with Mailchimp form action POST
-    setSubmitted(true);
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbwYynGXDhmbtLD6oSgD6H11fonApPVA_-t8bpBiwiYNzXdmdbkXoppaosl9f1e4EtJ0/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, email }),
+      });
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong. Please try again.');
+    }
   };
 
   return (
