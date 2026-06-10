@@ -393,7 +393,6 @@ export default function Risk() {
 
       {/* ── MOBILE STYLES ── */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap');
         @media (max-width: 768px) {
           .risk-hero { padding: 32px 5% 24px !important; }
           .risk-main { padding: 24px 5% 48px !important; }
